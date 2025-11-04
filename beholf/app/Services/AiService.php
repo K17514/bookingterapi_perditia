@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Log;
 class AiService
 {
     protected $apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
-    protected $apiKey = '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';
+    protected $apiKey = '';
     protected $model = 'microsoft/wizardlm-2-8x22b';
     protected $maxHistory = 20;
 
     public function __construct()
     {
         $this->session = session();
-        $this->apiKey = getenv('OPENROUTER_API_KEY') ?: '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'; // Replace with your actual key or use env
+        $this->apiKey = getenv('OPENROUTER_API_KEY') ?: ''; // Replace with your actual key or use env
     }
 
     public function getResponse(string $userMessage): string
